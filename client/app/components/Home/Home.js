@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import 'whatwg-fetch';
+import React, { Component } from "react";
+import "whatwg-fetch";
 
 class Home extends Component {
   constructor(props) {
@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <p className="mainText">JUST REACT</p>
+        <p className="mainText">JUST </p>
       </div>
     );
   }

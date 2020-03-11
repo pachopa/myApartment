@@ -3,6 +3,8 @@ dist/
 
 # Config file
 config/config.js
+config.php
+phpinfo.php
 
 # Node stuff
 node_modules
