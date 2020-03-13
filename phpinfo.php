@@ -20,6 +20,26 @@
   catch (PDOException $e) {
     ("Error occured:" . $e->getMessage());
   }
+
+  
+  // if(isset($_get[last_name])) {
+  //   echo "welcome";
+  // } else {
+  //   echo "fail";
+  // }
+
+  /*
+    tried to post data with MySQL server.
+
+  */
+
+  // $content = $_POST['content'];
+
+  // if($content) {
+  //   var_dump($content);
+  // } else {
+  //   echo "Error!";
+  // }
   
   // $sql = "SELECT * FROM user;";
   
