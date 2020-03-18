@@ -13,13 +13,28 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost/myApartment/phpinfo.php")
+    fetch("http://localhost/myApartment/phpinfo.php", { 
+      headers : { 
+      'Accept': 'application/json'
+      }
+    })
       .then(res => res.json())
-      .then(res => {
-        this.setState({
-          users: users
-        });
-      });
+      .then(
+        (result) => {
+          this.setState({
+            users: result
+          });
+          
+        },
+        (error) => {
+          this.setState({ error });
+        }
+        
+        // res => {
+        // this.setState({
+        //   users: users
+        // });
+      );
   }
 
   // getPHP() {
@@ -36,7 +51,7 @@ class Home extends Component {
   //     });
   // }
   render() {
-    console.log(this.state.users, "chris39");
+    console.log(this.state);
     return (
       <div>
         <p className="mainText">JUST React</p>
