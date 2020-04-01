@@ -21,7 +21,7 @@
     ("Error occured:" . $e->getMessage());
   }
 
-  
+  $method = 
   // if(isset($_get[last_name])) {
   //   echo "welcome";
   // } else {
