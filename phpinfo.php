@@ -1,21 +1,33 @@
 <?php
+  header("Access-Control-Allow-Origin: *");
+
   include 'config.php';
 
-  $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+  //$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-  if ($conn -> connect_error) {
-    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-    exit();
-  }
+  // if ($conn -> connect_error) {
+  //   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  //   exit();
+  // }
+
 
   try {
-    $pdo = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
-    $sql = 'CALL GetUsers()';
+    //$pdo = new PDO();
+    $sql = 'SELECT * FROM topic';
 
     $q = $pdo->query($sql);
     $q->setFetchMode(PDO::FETCH_ASSOC);
-    var_dump($q->fetch());
+  
+    $a = array();
 
+    while ($row = $q->fetch(PDO::FETCH_NUM)) {
+      $a = array(
+        "id" => $row[0],
+        "title" => $row[1],
+        "description" => $row[2]
+      );
+    }
+    echo json_encode($a);
   }
   catch (PDOException $e) {
     ("Error occured:" . $e->getMessage());
