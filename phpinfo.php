@@ -1,6 +1,7 @@
 <?php
-  header("Access-Control-Allow-Origin: *");
-
+  header('Access-Control-Allow-Origin', '*');
+  header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+ 
   include 'config.php';
 
   //$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
@@ -12,8 +13,8 @@
 
 
   try {
-    //$pdo = new PDO();
-    $sql = 'SELECT * FROM topic';
+    $pdo = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
+    $sql = 'SELECT * FROM user';
 
     $q = $pdo->query($sql);
     $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -33,7 +34,7 @@
     ("Error occured:" . $e->getMessage());
   }
 
-  $method = 
+  
   // if(isset($_get[last_name])) {
   //   echo "welcome";
   // } else {
@@ -42,7 +43,6 @@
 
   /*
     tried to post data with MySQL server.
-
   */
 
   // $content = $_POST['content'];

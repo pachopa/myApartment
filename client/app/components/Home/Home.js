@@ -13,9 +13,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost/myApartment/phpinfo.php", { 
-      headers : { 
-      'Accept': 'application/json'
+    fetch("http://localhost/myApartment/phpinfo.php", {
+      headers: {
+        'Accept': 'application/json'
       }
     })
       .then(res => res.json())
@@ -24,12 +24,12 @@ class Home extends Component {
           this.setState({
             users: result
           });
-          
+
         },
         (error) => {
           this.setState({ error });
         }
-        
+
         // res => {
         // this.setState({
         //   users: users
