@@ -22,7 +22,7 @@ class Home extends Component {
       .then(
         (result) => {
           this.setState({
-            users: result
+            users: [result]
           });
 
         },
@@ -35,31 +35,21 @@ class Home extends Component {
         //   users: users
         // });
       );
+
   }
 
-  // getPHP() {
-  //   var formData = new FormData();
-  //   formData.append("content", "test2");
-  //   fetch(`http://localhost/myApartment/phpinfo.php`, {
-  //     method: "POST",
-  //     headers: {},
-  //     body: formData
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log("response");
-  //     });
-  // }
   render() {
-    console.log(this.state);
+    console.log(this.state.users, "chris");
     return (
       <div>
         <p className="mainText">JUST React</p>
         {/* <button onClick={this.getPHP}>load</button> */}
         <h1> Users </h1>
-        {this.state.users.map(user => (
-          <div key={user.id}>{user.last_name} </div>
-        ))}
+        {this.state.users.map((user) => (
+
+          < div key={user.id} > {user.title} </div>
+        ))
+        }
       </div>
     );
   }
