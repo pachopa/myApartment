@@ -9,7 +9,7 @@ const webpackHotMiddleware = require("webpack-hot-middleware");
 const webpackConfig = require("../webpack.config");
 
 const isDev = process.env.NODE_ENV !== "production";
-const port = process.env.PORT || 2020;
+const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));

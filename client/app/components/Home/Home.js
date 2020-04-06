@@ -1,53 +1,81 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
-import { Link } from 'react-router-dom';
+import {
+  Link,
+  BrowserRouter,
+  Switch,
+  Route
+} from "react-router-dom";
+
+
+import App from '../App/App'
+import NotFound from '../App/NotFound';
+
+import Test from './Test';
+
+import HelloWorld from '../HelloWorld/HelloWorld';
+
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      error: null,
-      users: []
-    };
+    // this.state = {
+    //   error: null,
+    //   users: []
+    // };
 
   }
 
-  componentDidMount() {
-    fetch("http://localhost/myApartment/phpinfo.php", {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            users: [result]
-          });
+  // componentDidMount() {
+  //   fetch("http://localhost/myApartment/phpinfo.php", {
+  //     headers: {
+  //       'Accept': 'application/json'
+  //     }
+  //   })
+  //     .then(res => res.json())
+  //     .then(
+  //       (result) => {
+  //         this.setState({
+  //           users: [result]
+  //         });
 
-        },
-        (error) => {
-          this.setState({ error });
-        }
+  //       },
+  //       (error) => {
+  //         this.setState({ error });
+  //       }
 
-      );
+  //     );
 
-  }
+  // }
 
   render() {
-    console.log(this.state.users, "chris");
+    // console.log(this.state.users, "chris");
     return (
       <div>
-        <Link to="/helloworld">helloworld</Link>
+
+
+        <BrowserRouter>
+          <div>
+            <Switch>
+              <Route path="/" component={Home} exact />
+              <Route path="/test" component={Test} />
+              <Route path="/helloworld" component={HelloWorld} />
+              <Route component={NotFound} />
+            </Switch>
+            <Link to="/test">test</Link>
+          </div>
+
+        </BrowserRouter>
+
         <p className="mainText">JUST React</p>
         {/* <button onClick={this.getPHP}>load</button> */}
         <h1> Users </h1>
-        {this.state.users.map((user) => (
+        {/* {this.state.users.map((user) => (
 
           < div key={user.id} > {user.lastName} {user.firstName} {user.phone} {user.email}</div>
         ))
-        }
+        } */}
 
 
 

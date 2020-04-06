@@ -18,8 +18,9 @@ module.exports = merge(commonConfig, {
   },
 
   devServer: {
-    contentBase: './client/public',
+    contentBase: './client/app',
     historyApiFallback: true,
+    hot: true,
     stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
   }
 });
