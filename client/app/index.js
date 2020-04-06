@@ -8,7 +8,7 @@ import { render } from 'react-dom';
 //   Switch
 // } from 'react-router-dom';
 
-import Home from './components/Home/Home';
+import App from './components/Home/App';
 
 
-render(<Home />, document.getElementById('app'));
+render(<App />, document.getElementById('app'));
