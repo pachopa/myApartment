@@ -4,7 +4,8 @@ import {
   Link,
   BrowserRouter,
   Switch,
-  Route
+  Route,
+  HashRouter,
 } from "react-router-dom";
 
 
@@ -55,7 +56,7 @@ class App extends Component {
       <div>
 
 
-        <BrowserRouter>
+        <HashRouter>
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
@@ -66,7 +67,7 @@ class App extends Component {
             <Link to="/test">test</Link>
           </div>
 
-        </BrowserRouter>
+        </HashRouter>
         <Test />
         <p className="mainText">JUST React</p>
         {/* <button onClick={this.getPHP}>load</button> */}
