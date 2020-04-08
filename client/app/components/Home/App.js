@@ -11,7 +11,7 @@ import {
 // import App from '../App/App'
 import NotFound from '../App/NotFound';
 import Home from './Home';
-import Test from './Test';
+import ContactForm from './ContactForm';
 
 class App extends Component {
   constructor(props) {
@@ -29,14 +29,13 @@ class App extends Component {
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/test" component={Test} />
+              {/* <Route path="/contactform" component={ContactForm} /> */}
               <Route component={NotFound} />
             </Switch>
-            <Link to="/test">test</Link>
+            {/* <Link to="/contactform">test</Link> */}
           </div>
 
         </HashRouter>
-        <Test />
 
       </div>
     );
