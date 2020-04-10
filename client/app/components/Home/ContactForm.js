@@ -16,14 +16,6 @@ class ContactForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const params = {
-      name: "User",
-      startTime: "2:00PM",
-      endTime: "3:00PM",
-      status: "pending",
-      invitation: "test",
-    };
-
     axios.post("http://localhost/myApartment/contactInfo.php", qs.stringify(this.state))
 
       .then((response) => {
@@ -32,41 +24,7 @@ class ContactForm extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-
-
-    // let params = new URLSearchParams();
-    // params.append('email', 'test');
-    // params.append('url', 'test');
-
-    // this.$http.post(
-    //   'http://localhost/myApartment/contactInfo.php', params
-    // ).then((response) => {
-    //   if (response.data.message === "success") this.$router.push('thankyou');
-    // })
-    //   .catch((error) => console.log(error));
-    // axios({
-    //   method: "POST",
-    //   url: "http://localhost/myApartment/contactInfo.php",
-    //   data: params,
-    //   headers: {
-    //     'content-type': 'application/json',
-    //   },
-    // }).then((response) => {
-    //   if (response.data.status === 'success') {
-    //     console.log("Message Sent.");
-    //     this.resetForm()
-    //   } else if (response.data.status === 'fail') {
-    //     console.log("Message failed to send.")
-    //   } else {
-    //     console.log("failed", this.state, response.data.status);
-    //   }
-    // })
   }
-
-  // resetForm() {
-
-  //   this.setState({ name: '', email: '', message: '' })
-  // }
 
   render() {
     return (

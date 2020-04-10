@@ -2,14 +2,6 @@
   
   include 'config.php';
 
-  //$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
-
-  // if ($conn -> connect_error) {
-  //   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-  //   exit();
-  // }
-
-
   try {
     $pdo = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
     $sql = 'SELECT * FROM user';
