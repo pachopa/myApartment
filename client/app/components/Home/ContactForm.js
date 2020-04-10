@@ -1,87 +1,106 @@
-import React, { Component } from "react";
+import React from 'react';
 import axios from 'axios';
+import qs from 'qs';
 
-class ContactForm extends Component {
+class ContactForm extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      fname: 'h',
-      lname: 'h',
-      email: 'h',
-      message: 'h',
-      mailSent: false,
-      error: null
+      name: 'h',
+      email: 'h@h.com',
+      message: 'h'
     }
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-
-  handleFormSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
-    axios({
-      method: 'post',
-      url: `http://localhost/myApartment/contactInfo.php`,
-      headers: { 'content-type': 'application/json' },
-      data: this.state
-    })
-      .then(result => {
-        this.setState({
-          mailSent: result.data.sent
-        })
+
+    const params = {
+      name: "User",
+      startTime: "2:00PM",
+      endTime: "3:00PM",
+      status: "pending",
+      invitation: "test",
+    };
+
+    axios.post("http://localhost/myApartment/contactInfo.php", qs.stringify(this.state))
+
+      .then((response) => {
+        console.log("chris", response);
       })
-      .catch(error => this.setState({ error: error.message }));
-  };
+      .catch((error) => {
+        console.log(error);
+      });
+
+
+    // let params = new URLSearchParams();
+    // params.append('email', 'test');
+    // params.append('url', 'test');
+
+    // this.$http.post(
+    //   'http://localhost/myApartment/contactInfo.php', params
+    // ).then((response) => {
+    //   if (response.data.message === "success") this.$router.push('thankyou');
+    // })
+    //   .catch((error) => console.log(error));
+    // axios({
+    //   method: "POST",
+    //   url: "http://localhost/myApartment/contactInfo.php",
+    //   data: params,
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   },
+    // }).then((response) => {
+    //   if (response.data.status === 'success') {
+    //     console.log("Message Sent.");
+    //     this.resetForm()
+    //   } else if (response.data.status === 'fail') {
+    //     console.log("Message failed to send.")
+    //   } else {
+    //     console.log("failed", this.state, response.data.status);
+    //   }
+    // })
+  }
+
+  // resetForm() {
+
+  //   this.setState({ name: '', email: '', message: '' })
+  // }
 
   render() {
-
     return (
-      <div>
-        <h1> contact form </h1>
-
-        <p>Contact Me</p>
-        <div>
-          <form action="#">
-            <label>First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name.."
-              value={this.state.fname}
-              onChange={e => this.setState({ fname: e.target.value })}
-            />
-            <label>Last Name</label>
-            <input type=" text" id="lname" name="lastname" placeholder="Your last name.."
-              value={this.state.lname}
-              onChange={e => this.setState({ lname: e.target.value })}
-            />
-
-
-            <label>Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-
-
-            <label>Message</label>
-            <textarea id="message" name="message" placeholder="Write something.."
-              onChange={e => this.setState({ message: e.target.value })}
-              value={this.state.message}
-            ></textarea>
-            <input type="submit" onClick={e => this.handleFormSubmit(e)} value="Submit" />
-            <div>
-              {this.state.mailSent &&
-                <div>Thank you for contcting us.</div>
-              }
-            </div>
-          </form>
-        </div>
-
-
-
-
+      <div className="App">
+        <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input type="text" className="form-control" id="name" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">Email address</label>
+            <input type="email" className="form-control" id="email" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message">Message</label>
+            <textarea className="form-control" rows="5" id="message" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
+          </div>
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
       </div>
     );
-
   }
 
+  onNameChange(event) {
+    this.setState({ name: event.target.value })
+  }
+
+  onEmailChange(event) {
+    this.setState({ email: event.target.value })
+  }
+
+  onMessageChange(event) {
+    this.setState({ message: event.target.value })
+  }
 }
 
 export default ContactForm;

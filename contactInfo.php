@@ -1,47 +1,77 @@
 <?php
 
-  print_r($_POST);
-  $rest_json = file_get_contents("php://input");
-  echo $rest_json;
-  var_dump($rest_json);
-  $_POST = json_decode($rest_json, true);
-  
-  if (empty($_POST['fname']) && empty($_POST['email'])) die();
-  
-  if ($_POST)
-    {
-  
-    // set response code - 200 OK
-  
-    http_response_code(200);
-    $subject = $_POST['fname'];
-    $to = "me@malith.pro";
-    $from = $_POST['email'];
-  
-    // data
-  
-    $msg = $_POST['number'] . $_POST['message'];
-  
-    // Headers
-  
-    $headers = "MIME-Version: 1.0\r\n";
-    $headers.= "Content-type: text/html; charset=UTF-8\r\n";
-    $headers.= "From: <" . $from . ">";
-    mail($to, $subject, $msg, $headers);
-  
-    // echo json_encode( $_POST );
-  
-    echojson_encode(array(
-      "sent" => true
-    ));
-    }
-    else
-    {
-  
-    // tell the user about error
-  
-    echojson_encode(["sent" => false, "message" => "Something went wrong"]);
-    }
+header("Content-Type: application/json");
 
+print_r($_POST);
+$json = file_get_contents('php://input');
+echo 'chris', file_get_contents('php://input');
 
+$data = json_decode($json, true);
+$errors = array();
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+  if (empty($_POST['email'])) {
+    $errors[] = 'Email is empty';
+  } else {
+    $email = $_POST['email'];
+    
+    // validating the email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Invalid email';
+    }
+  }
+  if (empty($_POST['message'])) {
+    $errors[] = 'Message is empty';
+  } else {
+    $message = $_POST['message'];
+  }
+  if (empty($errors)) {
+    $date = date('j, F Y h:i A');
+    
+    $emailBody = "
+    <html>
+    <head>
+    <title>$email is contacting you</title>
+    </head>
+    <body style=\"background-color:#fafafa;\">
+    <div style=\"padding:20px;\">
+    Date: <span style=\"color:#888\">$date</span>
+    <br>
+    Email: <span style=\"color:#888\">$email</span>
+    <br>
+    Message: <div style=\"color:#888\">$message</div>
+    </div>
+    </body>
+    </html>
+    ";
+    
+    $headers = 	'From: Contact Form <contact@mydomain.com>' . "\r\n" .
+    "Reply-To: $email" . "\r\n" .
+    "MIME-Version: 1.0\r\n" . 
+    "Content-Type: text/html; charset=iso-8859-1\r\n";
+
+    $to = 'contact@example.com';
+    $subject = 'Contacting you';
+    
+    if (mail($to, $subject, $emailBody, $headers)) {
+      $sent = true;	
+    }
+  }
+}
 ?>
+
+  <?php if (!empty($errors)) : ?> 
+
+            {
+  "status": "fail",
+  "error":  <?php echo json_encode($errors) ?>
+}
+  <?php endif; ?>
+  
+  
+  <?php if (isset($sent) && $sent === true) : ?> 
+
+{
+  "status": "success",
+  "message": "Your data was successfully submitted"
+}
+  <?php endif; ?>
