@@ -1,9 +1,8 @@
 <?php
   
-  include 'config.php';
+  include 'connectDB.php';
 
   try {
-    $pdo = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
     $sql = 'SELECT * FROM user';
 
     $q = $pdo->query($sql);
@@ -24,7 +23,7 @@
       );
     }
 
-
+    
     echo json_encode($a);
   }
   catch (PDOException $e) {

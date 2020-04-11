@@ -5,6 +5,7 @@ dist/
 config/config.js
 config.php
 phpinfo.php
+connectDB.php
 
 # Node stuff
 node_modules

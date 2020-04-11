@@ -1,47 +1,77 @@
 <?php
-// echo 'chris';
-include 'config.php';
-$pdo = new PDO("mysql:host=$dbServername;dbname=$dbName", $dbUsername, $dbPassword);
-header("Content-Type: application/json");
 
-// $json = file_get_contents('php://input');
-// $_POST = json_decode($json, true);
-// $errors = array();
+  include 'connectDB.php';
+ 
+  // userful code to look at the data
+  $json = file_get_contents('php://input');
+  // $_POST = json_decode($json, true);
+  // $errors = array();
 
-// echo 'chris ', $json, $_POST, ' chris ', $json['email'];
+  if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-  if (empty($_POST['email'])) {
-    $errors[] = 'Email is empty';
-  } else {
-    echo $_POST['email'], ' chris ';
-    $email = $_POST['email'];
-    // validating the email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Invalid email';
+    try {
+      // echo 'test', $_POST['lName'],
+      // $_POST['fName'], $_POST['phone'], $_POST['email'],
+      // $_POST['address'], $_POST['suiteNum'];
+      $lName = $_POST['lName'];
+      $fName = $_POST['fName'];
+      $phone = $_POST['phone'];
+      $email = $_POST['email'];
+      $address = $_POST['address'];
+      $suiteNum = $_POST['suiteNum'];
+      $date = date_create()->format('Y-m-d H:i:s');
+      $author_type = '1';
+      $apart_id = '1';
+      $apart_building = '1';
+
+      //print $date
+
+      $pdoQuery = $pdo->prepare('INSERT INTO user (
+        last_name,
+        first_name,
+        phone,
+        email,
+        address,
+        suite_num,
+        date,
+        author_type,
+        apart_id,
+        apart_building
+      ) VALUES (
+        :lName,
+        :fName,
+        :phone,
+        :email,
+        :address,
+        :suiteNum,
+        :date,
+        :author_type,
+        :apart_id,
+        :apart_building
+      )
+      ');
+      // $pdoResult = $pdo->prepare($pdoQuery);
+      $pdoQuery->execute([
+        'lName' => $lName,
+        'fName' => $fName,
+        'phone' => $phone,
+        'email' => $email,
+        'address' => $address,
+        'suiteNum' => $suiteNum,
+        'date' => $date,
+        'author_type' => $author_type,
+        'apart_id' => $apart_id,
+        'apart_building' => $apart_building
+      ]);
+
+      echo 'Data Inserted';
+       
+    } catch(PDOException $e) {
+      //find a error reason
+      echo $e->getMessage();
     }
-  }
-  if (empty($_POST['message'])) {
-    $errors[] = 'Message is empty';
-  } else {
-    $message = $_POST['message'];
-  }
-}
+   
+  }  
 ?>
 
-  <?php if (!empty($errors)) : ?> 
-
-            {
-  "status": "fail",
-  "error":  <?php echo json_encode($errors) ?>
-}
-  <?php endif; ?>
   
-  
-  <?php if (isset($sent) && $sent === true) : ?> 
-
-{
-  "status": "success",
-  "message": "Your data was successfully submitted"
-}
-  <?php endif; ?>
