@@ -21,7 +21,6 @@ class ContactForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state, "c")
     axios.post("http://localhost/myApartment/contactInfo.php", qs.stringify(this.state))
 
       .then((response) => {
