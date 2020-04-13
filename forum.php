@@ -3,8 +3,7 @@
   include 'connectDB.php';
  
   // userful code to look at the data
-  $json = file_get_contents('php://input');
-
+  // $json = file_get_contents('php://input');
 
   if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
@@ -13,21 +12,17 @@
       $board_type = $_POST['board_type'];
       $title = $_POST['title'];
       $content = $_POST['content'];
-      $date = date_create()->format('Y-m-d H:i:s');
 
-     
       $pdoQuery = $pdo->prepare('INSERT INTO board (
         board_category,
         board_type,
         title,
-        content,
-        date,
+        content
       ) VALUES (
         :board_category,
         :board_type,
         :title,
-        :content,
-        :date,
+        :content
       )
       ');
       
@@ -36,11 +31,11 @@
         'board_type' => $board_type,
         'title' => $title,
         'content' => $content,
-        'date' => $date,
       ]);
 
-      echo 'Data Inserted';
-       
+      
+      echo json_encode();
+      
     } catch(PDOException $e) {
       //find a error reason
       echo $e->getMessage();

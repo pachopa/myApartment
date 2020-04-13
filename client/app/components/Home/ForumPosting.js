@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import axios from 'axios';
 import qs from 'qs';
 
+
+/* 
+  to do 
+  1. 게시판 타이틀 시간 글쓴이 표시
+  2. 게시판에 들어갔을때 컨텐츠 보이게끔
+  3. 유저 로그인 로그아웃
+  4. 
+
+*/
+
 class ForumPosting extends Component {
   constructor(props) {
     super(props);
@@ -9,8 +19,8 @@ class ForumPosting extends Component {
     this.state = {
       board_category: '1',
       board_type: '1',
-      title: 'dasdfasfdasf',
-      content: 'dasdfasdfsafsa',
+      title: 'chris',
+      content: 'df',
     };
   }
 

@@ -36,7 +36,6 @@ class App extends Component {
               <Route exact path="/forumposting" component={ForumPosting} />
               <Route component={NotFound} />
             </Switch>
-            <Link to="/contactform">test</Link>
           </div>
         </HashRouter>
 
