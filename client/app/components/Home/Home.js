@@ -30,12 +30,10 @@ class Home extends Component {
           this.setState({
             users: [result]
           });
-
         },
         (error) => {
           this.setState({ error });
         }
-
       );
 
   }
@@ -52,6 +50,7 @@ class Home extends Component {
           < div key={user.id} > {user.lastName} {user.firstName} {user.phone} {user.email}</div>
         ))
         }
+
         <ContactForm />
 
 

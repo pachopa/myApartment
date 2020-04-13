@@ -5,12 +5,36 @@ class Forum extends Component {
     super(props);
 
     this.state = {
-      title: '',
+      title: [],
       content: '',
     };
   }
 
+  componentDidMount() {
+    fetch("http://localhost/myApartment/forum.php", {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            title: result
+          });
+        },
+        (error) => {
+          this.setState({ error });
+        }
+      );
+
+  }
+
   render() {
+    // console.log(this.state.title[0]);
+    this.state.title.map(item => {
+      console.log(item.id);
+    });
     return (
       <div>
         <div>
