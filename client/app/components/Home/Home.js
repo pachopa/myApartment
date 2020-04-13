@@ -49,11 +49,9 @@ class Home extends Component {
         <button onClick={this.getPHP}>load</button>
         <h1> Users </h1>
         {this.state.users.map((user) => (
-
           < div key={user.id} > {user.lastName} {user.firstName} {user.phone} {user.email}</div>
         ))
         }
-
         <ContactForm />
 
 
