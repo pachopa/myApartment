@@ -11,8 +11,11 @@ import {
 import NotFound from '../App/NotFound';
 import Home from './Home';
 import ContactForm from './ContactForm';
-import Fourm from './Fourm';
-import './styles.scss';
+import Forum from './Forum';
+import ForumPosting from './ForumPosting';
+
+import '../../styles/styles.scss';
+
 
 class App extends Component {
   constructor(props) {
@@ -29,10 +32,11 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/contactform" component={ContactForm} />
-              <Route exact path="/fourm" component={Fourm} />
+              <Route exact path="/forum" component={Forum} />
+              <Route exact path="/forumposting" component={ForumPosting} />
               <Route component={NotFound} />
             </Switch>
-            {/* <Link to="/contactform">test</Link> */}
+            <Link to="/contactform">test</Link>
           </div>
         </HashRouter>
 

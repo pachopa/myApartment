@@ -50,7 +50,7 @@
         :apart_building
       )
       ');
-      // $pdoResult = $pdo->prepare($pdoQuery);
+     
       $pdoQuery->execute([
         'lName' => $lName,
         'fName' => $fName,
@@ -63,7 +63,7 @@
         'apart_id' => $apart_id,
         'apart_building' => $apart_building
       ]);
-
+      var_dump($pdoQuery);
       echo 'Data Inserted';
        
     } catch(PDOException $e) {
