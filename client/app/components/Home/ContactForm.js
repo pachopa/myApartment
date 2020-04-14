@@ -4,7 +4,20 @@ import qs from 'qs';
 
 class ContactForm extends React.Component {
 
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      lName: 'a',
+      fName: 'b',
+      phone: '778',
+      email: 'd@e.com',
+      address: 'f',
+      suiteNum: '3',
+      author_type: '1',
+      apart_id: '1',
+      apart_building: '1',
+    }
+  }
 
 
   handleSubmit(e) {
