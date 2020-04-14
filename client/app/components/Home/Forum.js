@@ -5,12 +5,36 @@ class Forum extends Component {
     super(props);
 
     this.state = {
-      title: '',
+      title: [],
       content: '',
     };
   }
 
+  componentDidMount() {
+    fetch("http://localhost/myApartment/forum.php", {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            title: result
+          });
+        },
+        (error) => {
+          this.setState({ error });
+        }
+      );
+
+  }
+
   render() {
+    // console.log(this.state.title[0]);
+    console.log(this.state.title.map((item) => {
+      return item.id;
+    }));
     return (
       <div>
         <div>
@@ -37,147 +61,48 @@ class Forum extends Component {
                       </div>
                       <h3>General subjects</h3>
                     </div>
+                    {this.state.title.map((item) => {
+                      return <div className="forum-item active">
+                        <div className="row">
+                          <div className="col-md-9">
+                            <div className="forum-icon">
+                              <i className="fa fa-shield"></i>
+                            </div>
+                            <a href="forum_post.html" className="forum-item-title">General Discussion</a>
+                            <div key={item.id} className="forum-item-title"> {item.title} {item.content}  </div>
+                            <div className="forum-sub-title">Talk about sports, entertainment, music, movies, your favorite color, talk about enything.</div>
+                          </div>
+                          <div className="col-md-1 forum-info">
+                            <span className="views-number">
+                              1216
+                              </span>
+                            <div>
+                              <small>Views</small>
+                            </div>
+                          </div>
+                          <div className="col-md-1 forum-info">
+                            <span className="views-number">
+                              368
+                              </span>
+                            <div>
+                              <small>Topics</small>
+                            </div>
+                          </div>
+                          <div className="col-md-1 forum-info">
+                            <span className="views-number">
+                              140
+                              </span>
+                            <div>
+                              <small>Posts</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                    <div className="forum-item active">
-                      <div className="row">
-                        <div className="col-md-9">
-                          <div className="forum-icon">
-                            <i className="fa fa-shield"></i>
-                          </div>
-                          <a href="forum_post.html" className="forum-item-title">General Discussion</a>
-                          <div className="forum-sub-title">Talk about sports, entertainment, music, movies, your favorite color, talk about enything.</div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            1216
-                            </span>
-                          <div>
-                            <small>Views</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            368
-                            </span>
-                          <div>
-                            <small>Topics</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            140
-                            </span>
-                          <div>
-                            <small>Posts</small>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="forum-item">
-                      <div className="row">
-                        <div className="col-md-9">
-                          <div className="forum-icon">
-                            <i className="fa fa-bolt"></i>
-                          </div>
-                          <a href="forum_post.html" className="forum-item-title">Introductions</a>
-                          <div className="forum-sub-title">New to the community? Please stop by, say hi and tell us a bit about yourself. </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            890
-                            </span>
-                          <div>
-                            <small>Views</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            120
-                            </span>
-                          <div>
-                            <small>Topics</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            154
-                            </span>
-                          <div>
-                            <small>Posts</small>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="forum-item active">
-                      <div className="row">
-                        <div className="col-md-9">
-                          <div className="forum-icon">
-                            <i className="fa fa-calendar"></i>
-                          </div>
-                          <a href="forum_post.html" className="forum-item-title">Announcements</a>
-                          <div className="forum-sub-title">This forum features announcements from the community staff. If there is a new post in this forum, please check it out. </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            680
-                            </span>
-                          <div>
-                            <small>Views</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            124
-                            </span>
-                          <div>
-                            <small>Topics</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            61
-                            </span>
-                          <div>
-                            <small>Posts</small>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="forum-item">
-                      <div className="row">
-                        <div className="col-md-9">
-                          <div className="forum-icon">
-                            <i className="fa fa-star"></i>
-                          </div>
-                          <a href="forum_post.html" className="forum-item-title">Staff Discussion</a>
-                          <div className="forum-sub-title">This forum is for private, staff member only discussions, usually pertaining to the community itself. </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            1450
-                            </span>
-                          <div>
-                            <small>Views</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            652
-                            </span>
-                          <div>
-                            <small>Topics</small>
-                          </div>
-                        </div>
-                        <div className="col-md-1 forum-info">
-                          <span className="views-number">
-                            572
-                            </span>
-                          <div>
-                            <small>Posts</small>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    })
+                    }
+
+
                   </div>
                 </div>
               </div>
@@ -192,4 +117,7 @@ class Forum extends Component {
 }
 
 export default Forum;
+
+
+
 

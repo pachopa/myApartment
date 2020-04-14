@@ -23,7 +23,6 @@
       );
     }
 
-    
     echo json_encode($a);
   }
   catch (PDOException $e) {

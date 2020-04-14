@@ -30,15 +30,14 @@ class Home extends Component {
           this.setState({
             users: [result]
           });
-
         },
         (error) => {
           this.setState({ error });
         }
-
       );
 
   }
+
 
   render() {
     console.log(this.state.users, "chris");
@@ -53,8 +52,6 @@ class Home extends Component {
         ))
         }
         <ContactForm />
-
-
       </div>
     );
   }

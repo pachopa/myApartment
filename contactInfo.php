@@ -10,9 +10,6 @@
   if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     try {
-      // echo 'test', $_POST['lName'],
-      // $_POST['fName'], $_POST['phone'], $_POST['email'],
-      // $_POST['address'], $_POST['suiteNum'];
       $lName = $_POST['lName'];
       $fName = $_POST['fName'];
       $phone = $_POST['phone'];
@@ -23,8 +20,6 @@
       $author_type = '1';
       $apart_id = '1';
       $apart_building = '1';
-
-      //print $date
 
       $pdoQuery = $pdo->prepare('INSERT INTO user (
         last_name,
