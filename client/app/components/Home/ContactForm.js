@@ -19,6 +19,7 @@ class ContactForm extends React.Component {
     }
   }
 
+
   handleSubmit(e) {
     e.preventDefault();
     axios.post("http://localhost/myApartment/contactInfo.php", qs.stringify(this.state))
@@ -32,6 +33,7 @@ class ContactForm extends React.Component {
   }
 
   render() {
+    this.state
     return (
       <div className="App">
         <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
