@@ -38,7 +38,6 @@ class Home extends Component {
 
   }
 
-
   render() {
     console.log(this.state.users, "chris");
     return (
