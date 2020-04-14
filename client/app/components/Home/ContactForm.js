@@ -33,7 +33,7 @@ class ContactForm extends React.Component {
   }
 
   render() {
-    this.state
+
     return (
       <div className="App">
         <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
