@@ -50,6 +50,7 @@ class Home extends Component {
           < div key={user.id} > {user.lastName} {user.firstName} {user.phone} {user.email}</div>
         ))
         }
+
         <ContactForm />
       </div>
     );
