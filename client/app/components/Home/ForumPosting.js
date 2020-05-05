@@ -9,7 +9,6 @@ import qs from 'qs';
   2. 게시판에 들어갔을때 컨텐츠 보이게끔
   3. 유저 로그인 로그아웃
   4. 
-
 */
 
 class ForumPosting extends Component {
