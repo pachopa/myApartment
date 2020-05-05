@@ -33,6 +33,7 @@ class Home extends Component {
         },
         (error) => {
           this.setState({ error });
+
         }
       );
 
