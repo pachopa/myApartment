@@ -18,6 +18,7 @@ class Home extends Component {
     };
   }
 
+
   componentDidMount() {
     fetch("http://localhost/myApartment/phpinfo.php", {
       headers: {
