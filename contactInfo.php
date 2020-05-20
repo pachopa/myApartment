@@ -2,6 +2,7 @@
 
   include 'connectDB.php';
  
+  
   // userful code to look at the data
   $json = file_get_contents('php://input');
   // $_POST = json_decode($json, true);
