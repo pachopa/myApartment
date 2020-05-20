@@ -5,8 +5,11 @@ dist/
 config/config.js
 config.php
 phpinfo.php
+<<<<<<< HEAD
+=======
 connectDB.php
 
+>>>>>>> 36bbd46eee0a70aef2ef293df11191128354b954
 # Node stuff
 node_modules
 .npm
