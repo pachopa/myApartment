@@ -11,8 +11,8 @@ class ForumPost extends Component {
   render() {
     return (
       <div>
-  
 
+        
       </div>
     );
   }
