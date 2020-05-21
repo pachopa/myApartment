@@ -13,6 +13,7 @@ import Home from './Home';
 import ContactForm from './ContactForm';
 import Forum from './Forum';
 import ForumPosting from './ForumPosting';
+import ForumPost from './ForumPost';
 
 import '../../styles/styles.scss';
 
@@ -34,6 +35,7 @@ class App extends Component {
               <Route path="/contactform" component={ContactForm} />
               <Route exact path="/forum" component={Forum} />
               <Route exact path="/forumposting" component={ForumPosting} />
+              <Route exact path="/forum/posting/:id" component={ForumPost} />
               <Route component={NotFound} />
             </Switch>
           </div>

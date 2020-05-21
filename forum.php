@@ -1,5 +1,5 @@
 <?php
-
+  
   include 'connectDB.php';
  
   // userful code to look at the data
