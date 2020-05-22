@@ -32,15 +32,7 @@ class Forum extends Component {
   }
 
   render() {
-<<<<<<< HEAD
     // console.log('this.state.title:', this.state.title)
-=======
-    // console.log(this.state.title[0]);
-    // console.log(this.state.title.map((item) => {
-    //   return item.id;
-    // }));
-
->>>>>>> da23c815c7f573d9f4ba702c32202027c039e742
     const postingList = this.state.title.map((posting) => {
       return <ForumPostingList key={posting.id} id={posting.id} title={posting.title} content={posting.content} />
     });
