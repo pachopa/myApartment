@@ -21,7 +21,8 @@ class ForumPostingList extends Component {
               </div>
               <a href="forum_post.html" className="forum-item-title">{this.props.title}</a>
               <div className="forum-item-title">  {this.props.content}  </div>
-              <Link to=`/forum/posting/` >test</Link>
+
+              <Link to={`/forum/${this.props.id}`}>test b</Link>
               {/* <div className="forum-sub-title">Talk about sports, entertainment, music, movies, your favorite color, talk about enything.</div> */}
             </div>
             <div className="col-md-1 forum-info">
