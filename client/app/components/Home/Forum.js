@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ForumPostingList from './ForumPostingList';
+
 
 class Forum extends Component {
   constructor(props) {
@@ -31,9 +33,13 @@ class Forum extends Component {
 
   render() {
     // console.log(this.state.title[0]);
-    console.log(this.state.title.map((item) => {
-      return item.id;
-    }));
+    // console.log(this.state.title.map((item) => {
+    //   return item.id;
+    // }));
+
+    const postingList = this.state.title.map((posting) => {
+      return <ForumPostingList key={posting.id} id={posting.id} title={posting.title} content={posting.content} />
+    });
     return (
       <div>
         <div>
@@ -60,48 +66,10 @@ class Forum extends Component {
                       </div>
                       <h3>General subjects</h3>
                     </div>
-                    {this.state.title.map((item) => {
-                      return <div className="forum-item active">
-                        <div className="row">
-                          <div className="col-md-9">
-                            <div className="forum-icon">
-                              <i className="fa fa-shield"></i>
-                            </div>
-                            <a href="forum_post.html" className="forum-item-title">General Discussion</a>
-                            <div key={item.id} className="forum-item-title"> {item.title} {item.content}  </div>
-                            <div className="forum-sub-title">Talk about sports, entertainment, music, movies, your favorite color, talk about enything.</div>
-                          </div>
-                          <div className="col-md-1 forum-info">
-                            <span className="views-number">
-                              1216
-                              </span>
-                            <div>
-                              <small>Views</small>
-                            </div>
-                          </div>
-                          <div className="col-md-1 forum-info">
-                            <span className="views-number">
-                              368
-                              </span>
-                            <div>
-                              <small>Topics</small>
-                            </div>
-                          </div>
-                          <div className="col-md-1 forum-info">
-                            <span className="views-number">
-                              140
-                              </span>
-                            <div>
-                              <small>Posts</small>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                    })
-                    }
-
-
+                    <div>
+                      {postingList}
+                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -116,7 +84,3 @@ class Forum extends Component {
 }
 
 export default Forum;
-
-
-
-
