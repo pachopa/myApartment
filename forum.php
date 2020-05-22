@@ -8,37 +8,79 @@
   // Handle a POST method
   if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    try {
-      $board_category = $_POST['board_category'];
-      $board_type = $_POST['board_type'];
-      $title = $_POST['title'];
-      $content = $_POST['content'];
+    
+    if($_POST['postingId']) {
+      // FIND CONTENTS BY POSTING ID
+      try {
+        
+        $postingId = $_POST['postingId'];
+        // echo json_encode($postingId);
 
-      $pdoQuery = $pdo->prepare('INSERT INTO board (
-        board_category,
-        board_type,
-        title,
-        content
-      ) VALUES (
-        :board_category,
-        :board_type,
-        :title,
-        :content
-      )
-      ');
-      
-      $pdoQuery->execute([
-        'board_category' => $board_category,
-        'board_type' => $board_type,
-        'title' => $title,
-        'content' => $content,
-      ]);
+        // '.' <-- THAT CHARACTER ENABLES VARIABLE TO USE IN QUOTATION
+        $sql = 'SELECT * FROM board WHERE id =' . $postingId;
+        $q = $pdo->query($sql);
+        $q->setFetchMode(PDO::FETCH_ASSOC);
 
-      echo ' Data Inserted ';
+        // $arrayCount = 0;
+        $allBoardInfo = array();
+        while ($row = $q->fetch(PDO::FETCH_NUM)) {
+        // echo $row;
+        $boardInfo = (object)array(
+          "id" => $row[0],
+          "board_category" => $row[1],
+          "board_type" => $row[2],
+          "title" => $row[3],
+          "content" => $row[4],
+          "date" => $row[5]
+        );
+
+        array_push($allBoardInfo, $boardInfo);
+        // $allBoardInfo[$arrayCount] = $boardInfo;
+        // $arrayCount++;
+
+        // var_dump($allBoardInfo);
+        echo json_encode($allBoardInfo);
+
+      }
+      } catch(PDOException $e) {
+
+        echo $e->getMessage();
+      }
+     
       
-    } catch(PDOException $e) {
-      //find a error reason
-      echo $e->getMessage();
+      
+    } else {
+      try {
+        $board_category = $_POST['board_category'];
+        $board_type = $_POST['board_type'];
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+  
+        $pdoQuery = $pdo->prepare('INSERT INTO board (
+          board_category,
+          board_type,
+          title,
+          content
+        ) VALUES (
+          :board_category,
+          :board_type,
+          :title,
+          :content
+        )
+        ');
+        
+        $pdoQuery->execute([
+          'board_category' => $board_category,
+          'board_type' => $board_type,
+          'title' => $title,
+          'content' => $content,
+        ]);
+        echo ' Data Inserted ';
+        
+      } catch(PDOException $e) {
+        //find a error reason
+        echo $e->getMessage();
+      }
     }
    
   } else {
@@ -64,9 +106,12 @@
         // $allBoardInfo[$arrayCount] = $boardInfo;
         // $arrayCount++;
 
+        
+
       }
       // var_dump($allBoardInfo);
-      echo json_encode($allBoardInfo);      
+      echo json_encode($allBoardInfo); 
+      
     } catch(PDOException $e) {
       
       echo $e->getMessage();

@@ -25,7 +25,7 @@ class ContactForm extends React.Component {
     axios.post("http://localhost/myApartment/contactInfo.php", qs.stringify(this.state))
 
       .then((response) => {
-        console.log("chris", response);
+        console.log("response", response);
       })
       .catch((error) => {
         console.log(error);
