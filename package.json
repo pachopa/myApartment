@@ -11,8 +11,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "webpack -p --progress --profile --colors && node server",
-    "start:dev": "node server"
+    "start": "webpack -p --progress --profile --colors && node server && npm run sass",
+    "start:dev": "node server",
+    "sass": "node-sass client/app/styles/styles.scss -o css client/app/styles/styles.css -w"
   },
   "dependencies": {
     "ajv": "^6.12.0",
