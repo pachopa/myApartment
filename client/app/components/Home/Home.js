@@ -7,6 +7,7 @@ import {
   Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
+import Sidebar from './Sidebar';
 
 class Home extends Component {
   constructor(props) {
@@ -45,15 +46,17 @@ class Home extends Component {
     return (
       <div>
 
-        <p className="mainText">JUST React</p>
+        {/* <p className="mainText">JUST React</p>
         <button onClick={this.getPHP}>load</button>
         <h1> Users </h1>
         {this.state.users.map((user) => (
           < div key={user.id} > {user.lastName} {user.firstName} {user.phone} {user.email}</div>
         ))
-        }
+        } */}
+        
+        {/* <ContactForm /> */}
 
-        <ContactForm />
+        <Sidebar />
       </div>
     );
   }

@@ -8,7 +8,7 @@ class ForumPost extends Component {
     this.state = {
       //get url id
       postingId: this.props.match.params.id, 
-      postingData: ''
+      postingData: []
     };
   }
 
@@ -16,7 +16,6 @@ class ForumPost extends Component {
     Axios.post("http://localhost/myapartment/forum.php", qs.stringify(this.state))
 
       .then((response) => {
-        console.log(response.data, 'response', response, );
         this.setState({
           postingData: response.data
         })
@@ -26,15 +25,13 @@ class ForumPost extends Component {
       });
   }
   
-
   render() {
-    // console.log('this.state.postingData:', this.state.postingData)
-    // this.state.postingData.map((posting) => {
-    //   console.log('posting.id:', posting.id)
-    // })
+    const posting = this.state.postingData.map((posting) => {
+      return <div key={posting.id}> {posting.id}, {posting.title}, {posting.content}</div>
+    })
     return (
       <div>
-        <div>test</div>
+        {posting}
       </div>
     );
   }
