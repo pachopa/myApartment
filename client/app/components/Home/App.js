@@ -14,6 +14,7 @@ import ContactForm from './ContactForm';
 import Forum from './Forum';
 import ForumPosting from './ForumPosting';
 import ForumPost from './ForumPost';
+import Sidebar from './Sidebar';
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div>
-
+        <Sidebar />
         <HashRouter>
           <div>
             <Switch>

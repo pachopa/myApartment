@@ -43,7 +43,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.users, "chris");
     return (
       <div>
 
@@ -57,7 +56,7 @@ class Home extends Component {
         
         {/* <ContactForm /> */}
         <Navbar />
-        <Sidebar />
+        
       </div>
     );
   }
