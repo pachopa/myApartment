@@ -39,12 +39,12 @@ class Forum extends Component {
     return (
       <div>
         <div>
-          <div className="container">
+          <div className="container forumContainer">
             <div className="row">
               <div className="col-lg-12">
                 <div className="wrapper wrapper-content animated fadeInRight">
 
-                  <div className="ibox-content m-b-sm border-bottom">
+                  {/* <div className="ibox-content m-b-sm border-bottom">
                     <div className="p-xs">
                       <div className="pull-left m-r-md">
                         <i className="fa fa-globe text-navy mid-icon"></i>
@@ -52,9 +52,15 @@ class Forum extends Component {
                       <h2>Welcome to our forum</h2>
                       <span>Feel free to choose topic you're interested in.</span>
                     </div>
+                  </div> */}
+
+                  <div className="btn-group groupButton rounded-top" role="group">
+                    <button type="button" className="btn">Left</button>
+                    <button type="button" className="btn">Middle</button>
+                    <button type="button" className="btn">Right</button>
                   </div>
 
-                  <div className="ibox-content forum-container">
+                  <div className="ibox-content forum-container forumContent">
 
                     <div className="forum-title">
                       <div className="pull-right forum-desc">
@@ -65,7 +71,7 @@ class Forum extends Component {
                     <div>
                       {postingList}
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
