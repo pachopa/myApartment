@@ -15,6 +15,7 @@ import Forum from './Forum';
 import ForumPosting from './ForumPosting';
 import ForumPost from './ForumPost';
 import Sidebar from './Sidebar';
+import Navbar from './Navbar';
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <Sidebar />
         <HashRouter>
           <div>

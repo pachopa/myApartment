@@ -7,8 +7,6 @@ import {
   Route
 } from "react-router-dom";
 import ContactForm from './ContactForm';
-import Sidebar from './Sidebar';
-import Navbar from './Navbar';
 
 class Home extends Component {
   constructor(props) {
@@ -55,7 +53,7 @@ class Home extends Component {
         } */}
         
         {/* <ContactForm /> */}
-        <Navbar />
+   
         
       </div>
     );

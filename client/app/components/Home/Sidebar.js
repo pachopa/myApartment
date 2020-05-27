@@ -13,7 +13,7 @@ class Sidebar extends Component {
     return (
       <div>
         <div className="nav-side-menu">
-          <div className="brand">Brand Logo</div>
+          <div className="brand">Edit this line later</div>
           <i className="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
           <div className="menu-list">
@@ -26,17 +26,17 @@ class Sidebar extends Component {
               </li>
 
               <li data-toggle="collapse" data-target="#products" className="collapsed active">
-                <a href="#"><i className="fa fa-gift fa-lg"></i> UI Elements <span className="arrow"></span></a>
+                <i className="fa fa-gift fa-lg"></i><a href="#">UI Elements </a>
               </li>
               <ul className="sub-menu collapse" id="products">
                 <li className="active"><a href="#">CSS3 Animation</a></li>
                 <li><a href="#">General</a></li>
-       
+
               </ul>
 
 
               <li data-toggle="collapse" data-target="#service" className="collapsed">
-                <a href="#"><i className="fa fa-globe fa-lg"></i> Services <span className="arrow"></span></a>
+                <i className="fa fa-globe fa-lg"></i><a href="#"> Services </a>
               </li>
               <ul className="sub-menu collapse" id="service">
                 <li>New Service 1</li>
@@ -46,7 +46,7 @@ class Sidebar extends Component {
 
 
               <li data-toggle="collapse" data-target="#new" className="collapsed">
-                <a href="#"><i className="fa fa-car fa-lg"></i> New <span className="arrow"></span></a>
+                <i className="fa fa-car fa-lg"></i><a href="#"> New </a>
               </li>
               <ul className="sub-menu collapse" id="new">
                 <li>New New 1</li>
@@ -56,15 +56,17 @@ class Sidebar extends Component {
 
 
               <li>
+                <i className="fa fa-user fa-lg"></i>
                 <a href="#">
-                  <i className="fa fa-user fa-lg"></i> Profile
-          </a>
+                  Profile
+                </a>
               </li>
 
               <li>
+                <i className="fa fa-users fa-lg"></i>
                 <a href="#">
-                  <i className="fa fa-users fa-lg"></i> Users
-          </a>
+                  Users
+                 </a>
               </li>
             </ul>
           </div>
