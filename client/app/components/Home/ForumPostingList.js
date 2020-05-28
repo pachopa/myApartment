@@ -15,15 +15,21 @@ class ForumPostingList extends Component {
       <div>
         <div className="forum-item active">
           <div className="row">
-            <div className="col-md-9">
+            <div className="col-md-1">
               <div className="forum-icon">
-                <i className="fa fa-shield"></i>
+                <i className="fa fa-shield">user picture</i>
               </div>
-              <a href="forum_post.html" className="forum-item-title">{this.props.title}</a>
-              <div className="forum-item-title">  {this.props.content}  </div>
+            </div>
+            <div className="col-md-8">
 
-              <Link to={`/forum/${this.props.id}`}>test b</Link>
-              {/* <div className="forum-sub-title">Talk about sports, entertainment, music, movies, your favorite color, talk about enything.</div> */}
+              <div>
+                <Link className="postingLink" to={`/forum/${this.props.id}`}>test b</Link>
+              </div>
+
+              <div className="forum-sub-title">{this.props.content}</div>
+              <div className="forum-item-title"> {this.props.date}   </div>
+
+
             </div>
             <div className="col-md-1 forum-info">
               <span className="views-number">
@@ -46,7 +52,7 @@ class ForumPostingList extends Component {
                 140
               </span>
               <div>
-                <small>Posts</small>
+                <small>writer name will be here</small>
               </div>
             </div>
           </div>
