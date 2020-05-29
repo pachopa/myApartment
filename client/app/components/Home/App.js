@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "whatwg-fetch";
 import {
-  Link,
-  BrowserRouter,
   Switch,
   Route,
   HashRouter,

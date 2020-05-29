@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "@reach/router"
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +24,7 @@ class Sidebar extends Component {
                 <a href="#">
                   Dashboard
                 </a>
+                <Link to="/contactform">contactform</Link>
               </li>
 
               <li data-toggle="collapse" data-target="#products" className="collapsed active">
