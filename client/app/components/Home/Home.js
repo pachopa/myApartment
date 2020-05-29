@@ -19,26 +19,26 @@ class Home extends Component {
   }
 
 
-  componentDidMount() {
-    fetch("http://localhost/myApartment/phpinfo.php", {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            users: [result]
-          });
-        },
-        (error) => {
-          this.setState({ error });
+  // componentDidMount() {
+  //   fetch("http://localhost/myApartment/phpinfo.php", {
+  //     headers: {
+  //       'Accept': 'application/json'
+  //     }
+  //   })
+  //     .then(res => res.json())
+  //     .then(
+  //       (result) => {
+  //         this.setState({
+  //           users: [result]
+  //         });
+  //       },
+  //       (error) => {
+  //         this.setState({ error });
 
-        }
-      );
+  //       }
+  //     );
 
-  }
+  // }
 
   render() {
     return (
