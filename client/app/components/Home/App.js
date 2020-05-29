@@ -20,7 +20,6 @@ class App extends Component {
     super(props);
 
   }
-
   render() {
     return (
       <div>
@@ -33,7 +32,8 @@ class App extends Component {
               <Route path="/contactform" component={ContactForm} />
               <Route exact path="/forum" component={Forum} />
               <Route exact path="/forumposting" component={ForumPosting} />
-              <Route exact path="/forum/:id" component={ForumPost} />
+              <Route exact path="/forum/:id" component={ForumPost} />  
+
               <Route component={NotFound} />
             </Switch>
           </div>
