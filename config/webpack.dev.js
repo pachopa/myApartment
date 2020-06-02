@@ -18,8 +18,10 @@ module.exports = merge(commonConfig, {
   },
 
   devServer: {
-    contentBase: './client/app',
-    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, './client'),
+    historyApiFallback: {
+      index: '../client/public/index.html'
+    },
     hot: true,
     stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
   }

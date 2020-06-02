@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from 'react-router-dom'
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -26,8 +26,9 @@ class Navbar extends Component {
               <li className="nav-item">
                 <a className="nav-link" href="#">Features</a>
               </li>
+              {/* <Link to="/forum">Link</Link> */}
               <li className="nav-item">
-                <a className="nav-link" href="#">Pricing</a>
+                <a className="nav-link" href="/forum">Pricing</a>
               </li>
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
