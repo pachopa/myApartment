@@ -16,7 +16,7 @@
     "sass": "node-sass -w client/app/styles/styles.scss client/app/styles/styles.css "
   },
   "dependencies": {
-    "ajv": "^6.12.0",
+    "ajv": "^6.12.3",
     "autoprefixer": "^7.1.6",
     "axios": "^0.19.2",
     "babel-core": "^6.26.0",
